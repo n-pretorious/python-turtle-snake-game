@@ -56,3 +56,8 @@ class Snake:
         tail = self.segments[-1]
         new_tail = self.create_segment(tail.position() - (MOVE_DISTANCE, 0))
         self.segments.append(new_tail)
+
+    def check_collision(self):
+        for segment in self.segments[1:]:
+            if self.head.distance(segment) < 10:
+                return True
