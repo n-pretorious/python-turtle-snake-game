@@ -37,13 +37,22 @@ class Snake:
             self.head.setheading(direction)
 
     def move_up(self):
-        self.set_direction(UP)
+        if self.head.heading() != DOWN:
+            self.set_direction(UP)
 
     def move_down(self):
-        self.set_direction(DOWN)
+        if self.head.heading() != UP:
+            self.set_direction(DOWN)
 
     def move_left(self):
-        self.set_direction(LEFT)
+        if self.head.heading() != RIGHT:
+            self.set_direction(LEFT)
 
     def move_right(self):
-        self.set_direction(RIGHT)
+        if self.head.heading() != LEFT:
+            self.set_direction(RIGHT)
+
+    def grow_snake(self):
+        tail = self.segments[-1]
+        new_tail = self.create_segment(tail.position() - (MOVE_DISTANCE, 0))
+        self.segments.append(new_tail)
