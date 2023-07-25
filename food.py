@@ -19,3 +19,16 @@ class Food(Turtle):
         y_cord = randint(-screen_height // 2 + 20, screen_height // 2 - 20)
 
         self.goto(x_cord, y_cord)
+
+
+class BonusFood(Food):
+    def __init__(self):
+        super().__init__()
+        self.shapesize(stretch_wid=1, stretch_len=1)
+        self.color("red")
+
+    def show_bonus(self):
+        self.showturtle()
+
+    def hide_bonus(self):
+        self.hideturtle()
